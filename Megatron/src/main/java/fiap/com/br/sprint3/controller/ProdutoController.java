@@ -1,10 +1,12 @@
 package fiap.com.br.sprint3.controller;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -24,15 +26,24 @@ public class ProdutoController {
 	ProdutoRepository produtoRepository;
 	
 	@PostMapping
+	@CrossOrigin
 	public ResponseEntity<ProdutoModel> cadastroProduto(@RequestBody ProdutoModel model){
 		produtoRepository.save(model);
 		return new ResponseEntity<ProdutoModel>(model, HttpStatus.CREATED);
 	}
 	
 	@GetMapping
-	public ResponseEntity<ProdutoModel> buscarProduto(@RequestBody String id){
+	@RequestMapping("/ID")
+	@CrossOrigin
+	public ResponseEntity<ProdutoModel> buscarProdutoPorID(@RequestBody String id){
 		Optional<ProdutoModel> produto = produtoRepository.findById(id);
 		return new ResponseEntity<ProdutoModel>(produto.get(), HttpStatus.OK);
+	}
+	
+	@GetMapping
+	@CrossOrigin
+	public ResponseEntity<List<ProdutoModel>> buscarProduto(){
+		return new ResponseEntity<List<ProdutoModel>>(produtoRepository.findAll(), HttpStatus.OK);
 	}
 	
 	@PutMapping
