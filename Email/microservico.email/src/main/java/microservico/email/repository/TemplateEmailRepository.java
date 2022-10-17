@@ -7,7 +7,6 @@ import org.springframework.data.mongodb.repository.Query;
 
 import microservico.email.models.EmailTemplate;
 
-
 public interface TemplateEmailRepository extends MongoRepository<EmailTemplate, String> {
 
 	@Query("{chave: '?0'}")
