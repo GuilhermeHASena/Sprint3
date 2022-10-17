@@ -1,5 +1,6 @@
 package microservico.email.controllers;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,9 +10,12 @@ import org.springframework.mail.MailException;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import microservico.email.models.EmailTemplate;
@@ -75,4 +79,18 @@ public class EmailController {
         emailEnviadoRepository.save(emailEnviado);
         return new ResponseEntity(HttpStatus.OK);
     }
+    
+    @GetMapping
+	@CrossOrigin
+	public ResponseEntity<List<EmailEnviadoModel>> buscarEmails(){
+		return new ResponseEntity<List<EmailEnviadoModel>>(emailEnviadoRepository.findAll(), HttpStatus.OK);
+	}
+    
+    @GetMapping("/data")
+	@CrossOrigin
+	public ResponseEntity<EmailEnviadoModel> buscarEmailPorData(@RequestParam("dataEnvio") String data){
+    	System.out.println(data);
+		Optional<EmailEnviadoModel> email = emailEnviadoRepository.obterPorData(data);
+		return new ResponseEntity<EmailEnviadoModel>(email.get(), HttpStatus.OK);
+	}
 }
