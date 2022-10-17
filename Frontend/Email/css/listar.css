@@ -1,0 +1,77 @@
+@import url('https://fonts.googleapis.com/css2?family=Fahkwang:wght@300;500&family=Poppins:wght@300&display=swap');
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+body{
+    font-family: 'Poppins', sans-serif;
+    max-width: 100%;
+}
+html{
+    scroll-behavior: smooth;
+    max-width: 100%;
+    overflow-x: hidden;
+}
+.container-principal{
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    width: 100%;
+}
+.form-field{
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.7vh;
+    font-weight: bold;
+    color: #151786;
+    height: 7vh;
+    width: 40vw;
+    margin-top: 5vh;
+    padding: 0 1.2vw;
+    border: none;
+    border-radius: 2vh;
+    box-shadow: 0px 2px 10px 0px rgb(0 0 0 / 20%);
+    outline: none;
+}
+.form-buttom{
+    width: 20vh;
+    height: 6vh;
+    margin: 0 2vw;
+    background-color: #151786;
+    color: white;
+    border-radius: 1.3vh;
+    font-family: 'Poppins', sans-serif;
+    font-size: 2vh;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0px 2px 10px 0px rgb(0 0 0 / 20%);
+}
+.form-buttom:hover{
+    background-color: #494a8d;
+    transition: all 0.5s ease 0s;
+}
+.viagem-title{
+    margin-top: 10vh;
+    color: #151786;
+    font-size: 4vh;
+}
+.viagem-table{
+    width: 80%;
+    margin-top: 5vh;
+    box-shadow: 0px 2px 16px 0px rgb(0 0 0 / 20%);
+    text-align: center;
+    border-radius: 2vh;
+    border-collapse: collapse;
+    border-spacing: 0;
+    overflow: hidden;
+}
+.viagem-thead{
+    background-color: #151786;
+    color: white;
+    height: 8vh;
+}
+.viagem-content{
+    height: 7vh;
+    font-weight: bold;
+}
